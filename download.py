@@ -59,10 +59,14 @@ def main(year, day_range):
         input_path = os.path.join(dirname, input_filename)
         with open(input_path, "w") as file:
             file.writelines(input_text)
+
         nb_filename = f"{str(day)}.ipynb"
         nb_path = os.path.join(dirname, nb_filename)
-        with open(nb_path, "w") as file:
-            pass
+        try:
+            with open(nb_path, "x") as file:
+                pass
+        except FileExistsError:
+            print(f"File {nb_path} already exists.")
 
 
 if __name__ == "__main__":
